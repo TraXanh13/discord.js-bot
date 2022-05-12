@@ -1,0 +1,30 @@
+{
+  "name": "js-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TraXanh13 (Kyle)",
+  "license": "ISC",
+  "keywords": [],
+  "description": "Discord bot using discord.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TraXanh13/discord.js-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TraXanh13/discord.js-bot/issues"
+  },
+  "homepage": "https://github.com/TraXanh13/discord.js-bot#readme",
+  "dependencies": {
+    "@discordjs/builders": "^0.13.0",
+    "@discordjs/rest": "^0.4.1",
+    "discord-api-types": "^0.32.1",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0"
+  }
+}
