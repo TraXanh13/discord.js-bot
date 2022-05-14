@@ -8,6 +8,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 // Retrieve commands
 client.commands = new Collection();
 
+// Array of file names in the commands folder
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 // Loop and collect command file names
@@ -18,10 +19,18 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
-// When the client is ready, run this code (only once)
-client.once('ready', () => {
-	console.log('Ready!');
-});
+// Array of file names in the events folder
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+// Loop and collect event file names
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
+	}
+}
 
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
